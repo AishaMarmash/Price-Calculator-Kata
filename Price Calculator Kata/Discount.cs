@@ -9,13 +9,13 @@ namespace Price_Calculator_Kata
     internal class Discount
     {
         public static int _discountValue = 15;
+        public static double _discountAmount;
         public static void ApplyDiscount(List<Product> products)
         {
-            double discountAmount; 
             foreach (var product in products)
             {
-                discountAmount = product.BasePrice * (_discountValue / 100.0);
-                product.CurrentPrice -= discountAmount;
+                _discountAmount = product.BasePrice * (_discountValue / 100.0);
+                product.CurrentPrice -= _discountAmount;
             }
         }
     }

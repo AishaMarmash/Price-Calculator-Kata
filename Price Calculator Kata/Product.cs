@@ -15,7 +15,7 @@
         }
         public string ProductPriceInfo()
         {
-            return $"Product price reported as ${BasePrice:0.00} before tax and ${CurrentPrice:0.00} after {Tax._taxValue}% tax.";
+            return $"Product price reported as ${BasePrice:0.00} before tax and ${CurrentPrice:0.00} after {Tax._taxPercentage}% tax.";
         }
     }
 }
