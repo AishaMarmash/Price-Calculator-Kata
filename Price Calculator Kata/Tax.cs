@@ -11,9 +11,11 @@ namespace Price_Calculator_Kata
         public static int _taxValue = 20;
         public static void ApplyTax(List<Product> products)
         {
+            double taxAmount;
             foreach(var product in products)
             {
-                product.Price = product.Price + (product.Price * (_taxValue / 100.0));
+                taxAmount = product.BasePrice * (_taxValue / 100.0);
+                product.CurrentPrice += taxAmount;
             }
         }
     }
