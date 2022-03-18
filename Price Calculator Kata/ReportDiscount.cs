@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Price_Calculator_Kata
 {
-    internal class Report
+    internal class ReportDiscount
     {
         static string? report;
         public static string? PrintReport(List<Product> products)
         {
-            foreach(var product in products)
+            foreach (var product in products)
             {
-                report += $"price ${product.CurrentPrice:0.00}{Environment.NewLine}" +
-                          $"{((Discount._discountValue==0) ? " " : $"${Discount._discountAmount:0.00} amount which was deduced")}";
+                report += $"price {product.CurrentPrice}{Environment.NewLine}" +
+                          $"total discount = {Price.TotalDiscount}";
             }
             return report;
         }
