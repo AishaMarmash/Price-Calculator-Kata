@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Price_Calculator_Kata
 {
-    internal class Discounts
+    interface IDiscount
     {
+        public double CalcPreTaxDiscounts(Product product);
+        public double CalcAfterTaxDiscounts(Product product);
     }
 }

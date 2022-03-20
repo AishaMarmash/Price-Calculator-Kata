@@ -8,11 +8,10 @@ namespace Price_Calculator_Kata
 {
     internal class UPCDiscount
     {
-        public static int _upcDiscount = 0;
-        public static double _discountAmount;
-        public static string when = "after";
+        public static double DiscountAmount;
+        public static string When = "after";
 
-        public static void setUpcDiscountPercentage(List<Product> products, int upcValue, int discountPercentage)
+        public static void setDiscountPercentage(List<Product> products, int upcValue, int discountPercentage)
         {
             var query = products.Where(n => n.UPC == upcValue).Select(n => n).ToList();
             foreach (var product in query)
@@ -20,11 +19,10 @@ namespace Price_Calculator_Kata
                 product.UPCDiscount = discountPercentage;
             }
         }
-        public static double CalculateUpcDiscount(Product product)
+        public static double CalculateDiscount(Product product)
         {
-            _discountAmount = product.CurrentPrice * (product.UPCDiscount / 100.0);
-            return _discountAmount;
+            DiscountAmount = product.CurrentPrice * (product.UPCDiscount / 100.0);
+            return Math.Round(DiscountAmount, 4);
         }
-
     }
 }

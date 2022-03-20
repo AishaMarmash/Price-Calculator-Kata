@@ -9,7 +9,7 @@ namespace Price_Calculator_Kata
     public class Expenses
     {
         public static Product ProductRef = new Product();
-        public static Dictionary<string, double> expenses = new Dictionary<string, double>();
+        public static Dictionary<string, double> ExpensesList = new Dictionary<string, double>();
         public Expenses(Product product)
         {
             ProductRef.Name = product.Name;
@@ -19,7 +19,7 @@ namespace Price_Calculator_Kata
         }
         public static void Add(string description, string amount)
         {
-            expenses.Add(description, parseAmount(amount));
+            ExpensesList.Add(description, parseAmount(amount));
         }
 
         private static double parseAmount(string amount)
@@ -35,12 +35,12 @@ namespace Price_Calculator_Kata
             {
                 Amount = double.Parse(amount);
             }
-            return Amount;
+            return Math.Round(Amount,4);
         }
         public static double ClaculateExpenses(Product product)
         {
             double totalExpenses = 0;
-            foreach(KeyValuePair<string, double> kvp in expenses)
+            foreach(KeyValuePair<string, double> kvp in ExpensesList)
             {
                 totalExpenses += kvp.Value;
             }

@@ -11,18 +11,26 @@ namespace Price_Calculator_Kata
         private static List<Product> _products = new List<Product>();
         public static void Main()
         {
-            Tax._taxPercentage = 21;
-            UniversalDiscount._universalDiscount = 0;
-            UniversalDiscount.when = "after";
-            Product product = new Product("The Little Prince", 12345, 20.25);
+            var productName = "The Little Prince";
+            var productUpc = 12345;
+            string cost = "20.25 USD";
+            var items = cost.Split(" ");
+            Currancy.Type = items[1];
+            double productPrice = double.Parse(items[0]);
+            Product product = new Product(productName, productUpc, productPrice);
             _products.Add(product);
-            UPCDiscount.setUpcDiscountPercentage(_products, 12345, 0);
-            UPCDiscount.when = "after";
-            Expenses expences = new Expenses(product);
-            Expenses.Add("Transport","0");
-            Expenses.Add("Packagig","0");
+            Tax.TaxPercentage = 21;
+            UniversalDiscount.DiscountPercentage = 15;
+            UniversalDiscount.When = "after";
+            UPCDiscount.setDiscountPercentage(_products, 12345, 7);
+            UPCDiscount.When = "after";
+            //Expenses expences = new Expenses(product);
+            //Expenses.Add("Transport","3%");
+            //Expenses.Add("Packagig","1%");
+            Price.DiscountWay = "additive";
+            Cap.CapValue = "20%";
             product.CurrentPrice = Price.CalculatePrice(product);
-            Console.WriteLine(ReportDiscount.PrintReport(_products));
+            Console.Write(Report.PrintReport(_products));
         }
     }
 }

@@ -8,14 +8,13 @@ namespace Price_Calculator_Kata
 {
     internal class UniversalDiscount
     {
-        public static int _universalDiscount = 15;
-        public static int _upcDiscount = 0;
-        public static double _discountAmount;
-        public static string when = "after";
-        public static double CalculateUniversalDiscount(Product product)
+        public static int DiscountPercentage = 15;
+        public static double DiscountAmount;
+        public static string When = "after";
+        public static double CalculateDiscount(Product product)
         {
-            _discountAmount = product.CurrentPrice * (_universalDiscount / 100.0);
-            return _discountAmount;
+            DiscountAmount = product.CurrentPrice * (DiscountPercentage / 100.0);
+            return Math.Round(DiscountAmount, 4);
         }
     }
 }
