@@ -9,6 +9,5 @@ namespace Price_Calculator_Kata
     public class Currancy
     {
         public static string Type = "$";
-
     }
 }

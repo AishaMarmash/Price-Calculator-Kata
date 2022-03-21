@@ -11,19 +11,14 @@ namespace Price_Calculator_Kata
         static double _discount = 0;
         public double CalcPreTaxDiscounts(Product product)
         {
-            double value = 0;
             _discount = 0;
             if (UniversalDiscount.When == "before")
             {
-                value = UniversalDiscount.CalculateDiscount(product);
-                product.CurrentPrice -= value;
-                _discount += value;
+                ApplyUniversalDiscount(ref product);
             }
             if (UPCDiscount.When == "before")
             {
-                value += UPCDiscount.CalculateDiscount(product);
-                product.CurrentPrice -= value;
-                _discount += value;
+                ApplUpcDiscount(ref product);
             }
             return Math.Round(_discount, 4);
         }
@@ -34,17 +29,27 @@ namespace Price_Calculator_Kata
             _discount = 0;
             if (UniversalDiscount.When == "after")
             {
-                value = UniversalDiscount.CalculateDiscount(product);
-                product.CurrentPrice -= value;
-                _discount += value;
+                ApplyUniversalDiscount(ref product);
             }
             if (UPCDiscount.When == "after")
             {
-                value = UPCDiscount.CalculateDiscount(product);
-                product.CurrentPrice -= value;
-                _discount += value;
+                ApplUpcDiscount(ref product);
             }
             return Math.Round(_discount, 4);
+        }
+        private void ApplyUniversalDiscount(ref Product product)
+        {
+            double value = 0;
+            value = UniversalDiscount.CalculateDiscount(product);
+            product.CurrentPrice -= value;
+            _discount += value;
+        }
+        private void ApplUpcDiscount(ref Product product)
+        {
+            double value = 0;
+            value += UPCDiscount.CalculateDiscount(product);
+            product.CurrentPrice -= value;
+            _discount += value;
         }
     }
 }

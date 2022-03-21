@@ -24,11 +24,11 @@ namespace Price_Calculator_Kata
             UniversalDiscount.When = "after";
             UPCDiscount.setDiscountPercentage(_products, 12345, 7);
             UPCDiscount.When = "after";
-            //Expenses expences = new Expenses(product);
+            Expenses expences = new Expenses(product);
             //Expenses.Add("Transport","3%");
-            //Expenses.Add("Packagig","1%");
-            Price.DiscountWay = "additive";
-            Cap.CapValue = "20%";
+           // Expenses.Add("Packagig","1%");
+            Price.DiscountWay = "additave";
+            Cap.CapValue = "30%";
             product.CurrentPrice = Price.CalculatePrice(product);
             Console.Write(Report.PrintReport(_products));
         }
