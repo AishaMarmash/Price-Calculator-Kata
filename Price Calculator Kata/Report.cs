@@ -13,19 +13,19 @@ namespace Price_Calculator_Kata
         {
             foreach (var product in products)
             {
-                _report += $"Cost =  {Math.Round(product.BasePrice,2)} {Currancy.Type}{Environment.NewLine}";
+                _report += $"Cost =  {Math.Round(product.BasePrice,2)} ${Environment.NewLine}";
                 if(Price.TaxAmount != 0)
-                { _report += $"Tax = {Math.Round(Price.TaxAmount,2)} {Currancy.Type}{ Environment.NewLine}";}             
+                { _report += $"Tax = {Math.Round(Price.TaxAmount,2)} ${ Environment.NewLine}";}             
                 if (Price.TotalDiscount != 0)
-                { _report += $"Discount = {Math.Round(Price.TotalDiscount,2)} {Currancy.Type}{ Environment.NewLine}";}
+                { _report += $"Discount = {Math.Round(Price.TotalDiscount,2)} ${ Environment.NewLine}";}
                 foreach(KeyValuePair<string, double> kvp in Expenses.ExpensesList)
                 {
-                    _report += $"{kvp.Key} = {Math.Round(kvp.Value,2)} {Currancy.Type}{Environment.NewLine}";
+                    _report += $"{kvp.Key} = {Math.Round(kvp.Value,2)} ${Environment.NewLine}";
                 }
-                _report += $"Total = {Math.Round(product.CurrentPrice,2)} {Currancy.Type}{Environment.NewLine}";
+                _report += $"Total = {Math.Round(product.CurrentPrice,2)} ${Environment.NewLine}";
 
                 if (Price.TotalDiscount != 0)
-                { _report += $"Total Discount = {Math.Round(Price.TotalDiscount,2)} {Currancy.Type}{Environment.NewLine}";}
+                { _report += $"Total Discount = {Math.Round(Price.TotalDiscount,2)} ${Environment.NewLine}";}
                 else
                 { _report += "no discounts";}
             }
