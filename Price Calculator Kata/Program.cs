@@ -32,7 +32,7 @@ namespace Price_Calculator_Kata
             Expenses.Add("Transport","3%");
             Expenses.Add("Packagig","1%");
             
-            Price.DiscountWay = "additave";
+            Price.DiscountWay = DiscountType.additave;
             
             Cap.CapValue = "30%";
             
