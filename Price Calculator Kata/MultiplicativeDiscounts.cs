@@ -12,11 +12,11 @@ namespace Price_Calculator_Kata
         public double CalcPreTaxDiscounts(Product product)
         {
             _discount = 0;
-            if (UniversalDiscount.When == "before")
+            if (UniversalDiscount.When == DiscountTime.before)
             {
                 ApplyUniversalDiscount(ref product);
             }
-            if (UPCDiscount.When == "before")
+            if (UPCDiscount.When ==DiscountTime.before)
             {
                 ApplUpcDiscount(ref product);
             }
@@ -25,13 +25,12 @@ namespace Price_Calculator_Kata
 
         public double CalcAfterTaxDiscounts(Product product)
         {
-            double value = 0;
             _discount = 0;
-            if (UniversalDiscount.When == "after")
+            if (UniversalDiscount.When == DiscountTime.after)
             {
                 ApplyUniversalDiscount(ref product);
             }
-            if (UPCDiscount.When == "after")
+            if (UPCDiscount.When == DiscountTime.after)
             {
                 ApplUpcDiscount(ref product);
             }

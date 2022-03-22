@@ -23,10 +23,10 @@ namespace Price_Calculator_Kata
             Tax.TaxPercentage = 21;
             
             UniversalDiscount.DiscountPercentage = 15;
-            UniversalDiscount.When = "after";
+            UniversalDiscount.When = DiscountTime.after;
             
             UPCDiscount.setDiscountPercentage(_products, 12345, 7);
-            UPCDiscount.When = "after";
+            UPCDiscount.When = DiscountTime.after;
             
             Expenses expences = new Expenses(product);
             Expenses.Add("Transport","3%");

@@ -9,7 +9,7 @@ namespace Price_Calculator_Kata
     internal class UPCDiscount
     {
         public static double DiscountAmount;
-        public static string When = "after";
+        public static DiscountTime When = DiscountTime.after;
 
         public static void setDiscountPercentage(List<Product> products, int upcValue, int discountPercentage)
         {

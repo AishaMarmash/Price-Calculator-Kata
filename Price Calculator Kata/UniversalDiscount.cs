@@ -10,7 +10,7 @@ namespace Price_Calculator_Kata
     {
         public static int DiscountPercentage = 15;
         public static double DiscountAmount;
-        public static string When = "after";
+        public static DiscountTime When = DiscountTime.after;
         public static double CalculateDiscount(Product product)
         {
             DiscountAmount = product.CurrentPrice * (DiscountPercentage / 100.0);
