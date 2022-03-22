@@ -13,15 +13,15 @@ namespace Price_Calculator_Kata
         public static double PreTaxDiscount = 0;
         public static double AfterTaxDiscount = 0;
         public static double ExpensesAmount = 0;
-        public static DiscountType DiscountWay = DiscountType.additave;
+        public static DiscountTypes DiscountType = DiscountTypes.additave;
         public static double CalculatePrice(Product product)
         {
             IDiscount discount = new AdditiveDiscounts();
-            if (DiscountWay == DiscountType.additave)
+            if (DiscountType == DiscountTypes.additave)
             {
                 discount = new AdditiveDiscounts();
             }
-            else if(DiscountWay == DiscountType.multiplicative)
+            else if(DiscountType == DiscountTypes.multiplicative)
             {
                 discount = new MultiplicativeDiscounts();
             }

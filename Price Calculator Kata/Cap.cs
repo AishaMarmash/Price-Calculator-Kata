@@ -8,11 +8,12 @@ namespace Price_Calculator_Kata
 {
     internal class Cap
     {
-        public static string CapValue = "";
+        public static string? CapValue = null;
         public static void ApplyCap(Product product)
         {
+            if (CapValue == null) return;
             double capValue = parseCap(CapValue, product);
-            if(Price.TotalDiscount > capValue )
+            if((Price.TotalDiscount > capValue))
             {
                 Price.TotalDiscount = capValue;
                 product.CurrentPrice = product.BasePrice - capValue;

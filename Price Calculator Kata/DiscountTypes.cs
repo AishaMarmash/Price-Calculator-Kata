@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Price_Calculator_Kata
 {
-    internal enum DiscountType
+    internal enum DiscountTypes
     {
         additave,
         multiplicative
