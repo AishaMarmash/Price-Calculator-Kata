@@ -14,7 +14,7 @@ namespace Price_Calculator_Kata
             var productName = "The Little Prince";
             var productUpc = 12345;
             double productPrice = 20.25;
-            Currancy.Type = CurrancyTypes.USD;
+            Currency.Type = CurrencyTypes.USD;
 
             Product product = new Product(productName, productUpc, productPrice);
             _products.Add(product);
@@ -36,7 +36,7 @@ namespace Price_Calculator_Kata
             Cap.CapValue = null;
             
             product.CurrentPrice = Price.CalculatePrice(product);
-            Console.Write(Report.PrintReport(_products));
+            Report.PrintReport(_products);
         }
     }
 }

@@ -9,27 +9,66 @@ namespace Price_Calculator_Kata
     internal class Report
     {
         static string? _report;
-        public static string? PrintReport(List<Product> products)
+        public static void PrintReport(List<Product> products)
         {
             foreach (var product in products)
             {
-                _report += $"Cost =  {Math.Round(product.BasePrice,2)} {Currancy.Type}{Environment.NewLine}";
-                if(Price.TaxAmount != 0)
-                { _report += $"Tax = {Math.Round(Price.TaxAmount,2)} {Currancy.Type}{ Environment.NewLine}";}             
-                if (Price.TotalDiscount != 0)
-                { _report += $"Discount = {Math.Round(Price.TotalDiscount,2)} {Currancy.Type}{ Environment.NewLine}";}
-                foreach(KeyValuePair<string, double> kvp in Expenses.ExpensesList)
-                {
-                    _report += $"{kvp.Key} = {Math.Round(kvp.Value,2)} {Currancy.Type}{Environment.NewLine}";
-                }
-                _report += $"Total = {Math.Round(product.CurrentPrice,2)} {Currancy.Type}{Environment.NewLine}";
-
-                if (Price.TotalDiscount != 0)
-                { _report += $"Total Discount = {Math.Round(Price.TotalDiscount,2)} {Currancy.Type}{Environment.NewLine}";}
-                else
-                { _report += "no discounts";}
+                if (product == null) return;
+                _report += GetCost(product);
+                _report += GetTax(product);
+                _report += GetDiscounts(product);
+                _report += GetExpenses(product);
+                _report += GetTotalPrice(product);
+                _report += ReportTotalDiscount(product);
             }
-            return _report;
+            Console.Write(_report);
+        }
+
+        private static string? GetCost(Product product)
+        {
+            return $"Cost =  {Math.Round(product.BasePrice, 2)} {Currency.Type}{Environment.NewLine}";
+        }
+
+        private static string? GetTax(Product product)
+        {
+            if (Price.TaxAmount != 0)
+                return $"Tax = {Math.Round(Price.TaxAmount, 2)} {Currency.Type}{ Environment.NewLine}"; 
+            else
+                return null;
+        }
+        private static string? GetDiscounts(Product product)
+        {
+            if (Price.TotalDiscount != 0)
+                return $"Discount = {Math.Round(Price.TotalDiscount, 2)} {Currency.Type}{ Environment.NewLine}";
+            else
+                return null;
+        }
+
+        private static string? GetExpenses(Product product)
+        {
+            string? expenses = null;
+            foreach (KeyValuePair<string, double> kvp in Expenses.ExpensesList)
+            {
+                expenses += $"{kvp.Key} = {Math.Round(kvp.Value, 2)} {Currency.Type}{Environment.NewLine}";
+            }
+            return expenses;
+        }
+
+        private static string? GetTotalPrice(Product product)
+        {
+            return $"Total = {Math.Round(product.CurrentPrice,2)} {Currency.Type}{Environment.NewLine}";
+        }
+
+        private static string? ReportTotalDiscount(Product product)
+        {
+            if (Price.TotalDiscount != 0)
+            { 
+                return $"Total Discount = {Math.Round(Price.TotalDiscount, 2)} {Currency.Type}{Environment.NewLine}"; 
+            }
+            else
+            { 
+                return "no discounts"; 
+            }
         }
     }
 }

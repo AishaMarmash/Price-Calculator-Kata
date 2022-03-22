@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Price_Calculator_Kata
 {
-    public enum CurrancyTypes
+    public enum CurrencyTypes
     {
         USD,
         GBP,

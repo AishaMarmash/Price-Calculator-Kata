@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Price_Calculator_Kata
 {
-    public class Currancy
+    public class Currency
     {
-        public static CurrancyTypes Type = CurrancyTypes.USD;
+        public static CurrencyTypes Type = CurrencyTypes.USD;
     }
 }
