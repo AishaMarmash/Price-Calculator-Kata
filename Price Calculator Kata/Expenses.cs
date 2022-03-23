@@ -8,8 +8,8 @@ namespace Price_Calculator_Kata
 {
     public class Expenses
     {
-        public static Product ProductRef = new Product();
-        public static Dictionary<string, double> ExpensesList = new Dictionary<string, double>();
+        public static Product ProductRef = new();
+        public static Dictionary<string, double> ExpensesList = new();
         public Expenses(Product product)
         {
             ProductRef.Name = product.Name;
@@ -19,13 +19,13 @@ namespace Price_Calculator_Kata
         }
         public static void Add(string description, string amount)
         {
-            ExpensesList.Add(description, parseAmount(amount));
+            ExpensesList.Add(description, ParseAmount(amount));
         }
 
-        private static double parseAmount(string amount)
+        private static double ParseAmount(string amount)
         {
             double Amount;
-            if (amount.Contains("%"))
+            if (amount.Contains('%'))
             {
                 int indexOfPercent = amount.IndexOf('%');
                 amount = amount.Remove(indexOfPercent);
@@ -37,7 +37,7 @@ namespace Price_Calculator_Kata
             }
             return Math.Round(Amount,4);
         }
-        public static double ClaculateExpenses(Product product)
+        public static double ClaculateExpenses()
         {
             double totalExpenses = 0;
             foreach(KeyValuePair<string, double> kvp in ExpensesList)

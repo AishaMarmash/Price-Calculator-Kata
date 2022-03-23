@@ -12,18 +12,18 @@ namespace Price_Calculator_Kata
         public static void ApplyCap(Product product)
         {
             if (CapValue == null) return;
-            double capValue = parseCap(CapValue, product);
+            double capValue = ParseCap(CapValue, product);
             if((Price.TotalDiscount > capValue))
             {
                 Price.TotalDiscount = capValue;
                 product.CurrentPrice = product.BasePrice - capValue;
             }
         }
-        private static double parseCap(string value, Product product)
+        private static double ParseCap(string value, Product product)
         {
             double capValue;
             double capPercentage;
-            if (value.Contains("%"))
+            if (value.Contains('%'))
             {
                 int indexOfPercent = value.IndexOf('%');
                 value = value.Remove(indexOfPercent);

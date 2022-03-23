@@ -28,7 +28,7 @@ namespace Price_Calculator_Kata
             PreTaxDiscount = discount.CalcPreTaxDiscounts(product);
             TaxAmount = Tax.CalculateTax(product);
             AfterTaxDiscount = discount.CalcAfterTaxDiscounts(product);
-            ExpensesAmount = Expenses.ClaculateExpenses(product);
+            ExpensesAmount = Expenses.ClaculateExpenses();
             TotalDiscount = PreTaxDiscount + AfterTaxDiscount;
             Cap.ApplyCap(product);
             product.CurrentPrice = product.CurrentPrice + TaxAmount + ExpensesAmount;

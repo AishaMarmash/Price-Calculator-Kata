@@ -14,11 +14,11 @@ namespace Price_Calculator_Kata
             _discount = 0;
             if (UniversalDiscount.When == DiscountTime.before)
             {
-                ApplyUniversalDiscount(ref product);
+                ApplyUniversalDiscount(product);
             }
             if (UPCDiscount.When ==DiscountTime.before)
             {
-                ApplUpcDiscount(ref product);
+                ApplyUpcDiscount(product);
             }
             return Math.Round(_discount, 4);
         }
@@ -28,22 +28,24 @@ namespace Price_Calculator_Kata
             _discount = 0;
             if (UniversalDiscount.When == DiscountTime.after)
             {
-                ApplyUniversalDiscount(ref product);
+                ApplyUniversalDiscount(product);
             }
             if (UPCDiscount.When == DiscountTime.after)
             {
-                ApplUpcDiscount(ref product);
+                ApplyUpcDiscount(product);
             }
             return Math.Round(_discount, 4);
         }
-        private void ApplyUniversalDiscount(ref Product product)
+
+        private static void ApplyUniversalDiscount(Product product)
         {
-            double value = 0;
+            double value;
             value = UniversalDiscount.CalculateDiscount(product);
             product.CurrentPrice -= value;
             _discount += value;
         }
-        private void ApplUpcDiscount(ref Product product)
+
+        private static void ApplyUpcDiscount(Product product)
         {
             double value = 0;
             value += UPCDiscount.CalculateDiscount(product);

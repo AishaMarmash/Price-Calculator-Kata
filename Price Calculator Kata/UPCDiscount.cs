@@ -11,7 +11,7 @@ namespace Price_Calculator_Kata
         public static double DiscountAmount;
         public static DiscountTime When = DiscountTime.after;
 
-        public static void setDiscountPercentage(List<Product> products, int upcValue, int discountPercentage)
+        public static void SetDiscountPercentage(List<Product> products, int upcValue, int discountPercentage)
         {
             var query = products.Where(n => n.UPC == upcValue).Select(n => n).ToList();
             foreach (var product in query)

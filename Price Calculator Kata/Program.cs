@@ -8,7 +8,7 @@ namespace Price_Calculator_Kata
 {
     internal class Program
     {
-        private static List<Product> _products = new List<Product>();
+        private static readonly List<Product> _products = new();
         public static void Main()
         {
             var productName = "The Little Prince";
@@ -16,7 +16,7 @@ namespace Price_Calculator_Kata
             double productPrice = 20.25;
             Currency.Type = CurrencyTypes.USD;
 
-            Product product = new Product(productName, productUpc, productPrice);
+            Product product = new(productName, productUpc, productPrice);
             _products.Add(product);
             
             Tax.TaxPercentage = 21;
@@ -24,12 +24,12 @@ namespace Price_Calculator_Kata
             UniversalDiscount.DiscountPercentage = 15;
             UniversalDiscount.When = DiscountTime.after;
             
-            UPCDiscount.setDiscountPercentage(_products, 12345, 7);
+            UPCDiscount.SetDiscountPercentage(_products, 12345, 7);
             UPCDiscount.When = DiscountTime.after;
             
-            //Expenses expences = new Expenses(product);
-            //Expenses.Add("Transport","3%");
-            //Expenses.Add("Packagig","1%");
+            Expenses expences = new(product);
+            Expenses.Add("Transport","3%");
+            Expenses.Add("Packagig","1%");
             
             Price.DiscountType = DiscountTypes.additave;
             
