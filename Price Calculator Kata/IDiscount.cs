@@ -8,7 +8,7 @@ namespace Price_Calculator_Kata
 {
     interface IDiscount
     {
-        public double CalcPreTaxDiscounts(Product product);
-        public double CalcAfterTaxDiscounts(Product product);
+        double CalcPreTaxDiscounts(Product product);
+        double CalcAfterTaxDiscounts(Product product);
     }
 }
