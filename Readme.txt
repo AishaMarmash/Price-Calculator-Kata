@@ -1,3 +1,3 @@
 Price Calculator Kata Task.
-It's a trading company's console application.
-It is in responsible of accounting and computing product prices, taking into consideration the applicable taxes, discounts, and expenses as well as the company's policies.
+
+My trainer, Basil, reviewed the code, and he told me that there was a problem with the using of static fields. He asked me to take this into consideration in the coming tasks without the need to modify it now.
