@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Price_Calculator_Kata
+﻿namespace Price_Calculator_Kata
 {
-    internal class Cap
+    public class CapManager
     {
-        public static string? CapValue = null;
-        public static void ApplyCap(Product product)
+        public static double ApplyCap(Product product, double TotalDiscount)
         {
-            if (CapValue == null) return;
-            double capValue = ParseCap(CapValue, product);
-            if((Price.TotalDiscount > capValue))
+            if (Configurations.CapValue == null) { return 0; }
+            double capValue = ParseCap(Configurations.CapValue, product);
+            if((TotalDiscount > capValue))
             {
-                Price.TotalDiscount = capValue;
+                TotalDiscount = capValue;
                 product.CurrentPrice = product.BasePrice - capValue;
             }
+            return TotalDiscount;
         }
         private static double ParseCap(string value, Product product)
         {
@@ -38,7 +32,7 @@ namespace Price_Calculator_Kata
         }
         public static double CalculateCap(double Amount,Product product)
         {
-            return Math.Round(Amount * (product.BasePrice - Price.PreTaxDiscount), 4);
+            return Math.Round(Amount * product.BasePrice, 4);
         }
     }
 }
