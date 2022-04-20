@@ -1,54 +1,50 @@
-﻿using System;
+﻿using Price_Calculator_Kata.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Price_Calculator_Kata
 {
-    public class MultiplicativeDiscounts : IDiscount
+    public class MultiplicativeDiscounts : Discount, IDiscountTime
     {
-        static double _discount = 0;
-        public double CalcPreTaxDiscounts(Product product)
+        public override double CalcPreTaxDiscounts(Product product)
         {
             _discount = 0;
-            if (UniversalDiscount.When == DiscountTime.before)
+            if (UniversalDiscountCalculator.When == DiscountTime.before)
             {
                 ApplyUniversalDiscount(product);
             }
-            if (UPCDiscount.When ==DiscountTime.before)
+            if (product.UPCDiscountTime ==DiscountTime.before)
             {
                 ApplyUpcDiscount(product);
             }
             return Math.Round(_discount, 4);
         }
 
-        public double CalcAfterTaxDiscounts(Product product)
+        public override double CalcAfterTaxDiscounts(Product product)
         {
             _discount = 0;
-            if (UniversalDiscount.When == DiscountTime.after)
+            if (UniversalDiscountCalculator.When == DiscountTime.after)
             {
                 ApplyUniversalDiscount(product);
             }
-            if (UPCDiscount.When == DiscountTime.after)
+            if (product.UPCDiscountTime == DiscountTime.after)
             {
                 ApplyUpcDiscount(product);
             }
             return Math.Round(_discount, 4);
         }
 
-        private static void ApplyUniversalDiscount(Product product)
+        public void ApplyUniversalDiscount(Product product)
         {
             double value;
-            value = UniversalDiscount.CalculateDiscount(product);
+            value = universalDiscount.Calculate(product);
             product.CurrentPrice -= value;
             _discount += value;
         }
 
-        private static void ApplyUpcDiscount(Product product)
+        public void ApplyUpcDiscount(Product product)
         {
             double value = 0;
-            value += UPCDiscount.CalculateDiscount(product);
+            value += uPCDiscount.Calculate(product);
             product.CurrentPrice -= value;
             _discount += value;
         }
