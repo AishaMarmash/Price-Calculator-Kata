@@ -1,6 +1,4 @@
 ﻿using Price_Calculator_Kata.Models;
-using System.Collections.Generic;
-using System.Linq;
 namespace Price_Calculator_Kata
 {
     public class MultiplicativeDiscounts : Discount, IDiscountTime
@@ -33,7 +31,7 @@ namespace Price_Calculator_Kata
             return Math.Round(_discount, 4);
         }
 
-        public void ApplyUniversalDiscount(Product product)
+        private void ApplyUniversalDiscount(Product product)
         {
             double value;
             value = universalDiscount.Calculate(product);
@@ -41,7 +39,7 @@ namespace Price_Calculator_Kata
             _discount += value;
         }
 
-        public void ApplyUpcDiscount(Product product)
+        private void ApplyUpcDiscount(Product product)
         {
             double value = 0;
             value += uPCDiscount.Calculate(product);

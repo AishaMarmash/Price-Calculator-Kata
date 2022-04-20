@@ -1,13 +1,11 @@
-﻿using Price_Calculator_Kata.Models;
-
-namespace Price_Calculator_Kata
+﻿namespace Price_Calculator_Kata
 {
     public class CapManager
     {
         public static double ApplyCap(Product product, double TotalDiscount)
         {
-            if (Cap.CapValue == null) { return 0; }
-            double capValue = ParseCap(Cap.CapValue, product);
+            if (Configurations.CapValue == null) { return 0; }
+            double capValue = ParseCap(Configurations.CapValue, product);
             if((TotalDiscount > capValue))
             {
                 TotalDiscount = capValue;

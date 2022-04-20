@@ -1,9 +1,8 @@
-﻿using Price_Calculator_Kata.Models;
-using Price_Calculator_Kata.Services;
+﻿using Price_Calculator_Kata.Services;
 
 namespace Price_Calculator_Kata
 {
-    internal class PriceCalculator
+    public class PriceCalculator
     {
         public double TaxAmount = 0;
         public double TotalDiscount = 0;
@@ -13,26 +12,25 @@ namespace Price_Calculator_Kata
         public DiscountTypes DiscountType = DiscountTypes.additave;
         public double CalculatePrice(Product product)
         {
-            IDiscountTime discount = new AdditiveDiscounts();
+            IDiscountTime discount = ServicesProvider.CreateAdditiveDiscounts();
             if (DiscountType == DiscountTypes.additave)
             {
-                discount = new AdditiveDiscounts();
+                discount = ServicesProvider.CreateAdditiveDiscounts();
             }
             else if(DiscountType == DiscountTypes.multiplicative)
             {
-                discount = new MultiplicativeDiscounts();
+                discount = ServicesProvider.CreateMultiplicativeDiscounts();
             }
             PreTaxDiscount = discount.CalcPreTaxDiscounts(product);
 
-            TaxCalculator taxCalculator = new TaxCalculator();
+            TaxCalculator taxCalculator = ServicesProvider.CreateTaxCalculator();
             TaxAmount = taxCalculator.Calculate(product);
 
             AfterTaxDiscount = discount.CalcAfterTaxDiscounts(product);
 
-            ExpensesCalculator expenses = new();
+            ExpensesCalculator expenses = ServicesProvider.CreateExpensesCalculator();
             ExpensesAmount = expenses.Claculate(product);
             TotalDiscount = PreTaxDiscount + AfterTaxDiscount;
-
 
             TotalDiscount = CapManager.ApplyCap(product ,TotalDiscount);
 

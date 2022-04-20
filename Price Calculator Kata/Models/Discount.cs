@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Price_Calculator_Kata.Models
+﻿namespace Price_Calculator_Kata.Models
 {
     abstract public class Discount
     {
@@ -13,8 +7,8 @@ namespace Price_Calculator_Kata.Models
         public UniversalDiscountCalculator universalDiscount;
         public Discount()
         {
-            uPCDiscount = new UPCDiscountCalculator();
-            universalDiscount = new UniversalDiscountCalculator();
+            uPCDiscount = ServicesProvider.CreateUPCDiscountCalculator();
+            universalDiscount = ServicesProvider.CreateUniversalDiscountCalculator();
         }
         abstract public double CalcPreTaxDiscounts(Product product);
         abstract public double CalcAfterTaxDiscounts(Product product);

@@ -1,11 +1,8 @@
-﻿using Price_Calculator_Kata.Models;
-
-namespace Price_Calculator_Kata
+﻿namespace Price_Calculator_Kata
 {
     public class ExpensesRegister
     {
-        Product _product;
-        public Dictionary<string, double> ExpensesList = new();
+        readonly Product _product;
         public ExpensesRegister(ref Product product)
         {
             _product = product;
@@ -14,7 +11,6 @@ namespace Price_Calculator_Kata
         {
             _product.ExpensesList.Add(description, ParseAmount(amount));
         }
-
         private double ParseAmount(string amount)
         {
             double Amount;
